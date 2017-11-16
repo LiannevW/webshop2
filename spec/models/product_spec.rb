@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    it "is invalid without a name" do
+        product = Product.new(name: "")
+        product.valid?
+        expect(product.errors).to have_key(:name)
+    end
+  end
 end
