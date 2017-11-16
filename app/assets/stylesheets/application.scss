@@ -1,2 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+.navbar-colorful {
+  background: #1bd6cc; /* Old Browsers */
+background: -webkit-linear-gradient(right,#1bd6cc,#b2f7c8); /*Safari 5.1-6*/
+background: -o-linear-gradient(right,#1bd6cc,#b2f7c8); /*Opera 11.1-12*/
+background: -moz-linear-gradient(right,#1bd6cc,#b2f7c8); /*Fx 3.6-15*/
+background: linear-gradient(to left, #1bd6cc, #b2f7c8); /*Standard*/
+}
