@@ -31,6 +31,11 @@ respond_to do |format|
   end
 
   def destroy
+    @cart = shopping_cart
+    product = Product.find(params[:id])
+    @cart.remove_product(product)
+    redirect_to shopping_cart_index_path
+
     # remove something from it
   end
 end

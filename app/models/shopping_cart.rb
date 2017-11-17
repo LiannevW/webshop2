@@ -26,15 +26,13 @@ class ShoppingCart
   end
 
   def remove_product(product, amount = 1)
-    return false unless already_ordered?(product)
 
-    @cart_items.select! do |item|
-      next if item.product.id != product.id
-
-      item.amount -= amount
-      amount>0     #Invokes the given block passing in successive elements from self, deleting elements for which the block returns a false value.
+    @cart_items.reject! do |item|
+      item.product.id == product.id
     end
-    return true
+      @cart_items
+        
+        store!
   end
 
   def already_ordered?(product)

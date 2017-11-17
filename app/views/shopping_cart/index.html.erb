@@ -15,7 +15,9 @@
     <tr>
       <td><%= link_to product.name, product_path(product.id) %></p>
       <td><%= product.price %></p>
-      <td></td>
+        <td>
+        <p><%= link_to "Delete item", shopping_cart_path(product), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-default" %></p>
+      </td>
     </tr>
   <% end %>
   <tr>
