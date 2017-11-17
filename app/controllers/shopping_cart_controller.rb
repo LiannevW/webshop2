@@ -15,16 +15,19 @@ class ShoppingCartController < ApplicationController
     @cart = shopping_cart
 
     # add something to it
-    product = Product.find(params[:product_id])
-    amount = params[:amount]
-
-    if @cart.add_product(product, amount)
+    product = (params[:format] == 'json') ? Product.find(params[:product][:product_id]) : Product.find(params[:product_id])
+    # amount = params[:amount]
+respond_to do |format|
+    if @cart.add_product(product)
         # happy
-        redirect_to root_path
+        format.html {redirect_to root_path, notice: "Product added"}
+        format.json {render json: {cart: @cart, status: :created, location: product_path(product) }}
     else
-      # not so happy, something went wrong
+      format.html {redirect_to root_path}
+      # format.json {render json: @cart.errors, status: :unprocessable_entity}# not so happy, something went wrong
       #redirect_to product_id
     end
+  end
   end
 
   def destroy
