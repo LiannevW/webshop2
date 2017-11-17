@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
 
 
   def shopping_cart
-    @cart ||= ShoppingCart.new(session)
+    @cart ||= ShoppingCart.new(session) 
   end
 end
