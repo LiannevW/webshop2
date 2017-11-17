@@ -23,7 +23,7 @@ user4 = User.create!(
         )
 
 #Create products
-product1 = Product.create!(name: "T-shirt", description: "All sizes are available")
-product2 = Product.create!(name: "Closet", description: "Latest model")
-product3 = Product.create!(name: "Table", description: "Oval table")
-product4 = Product.create!(name: "Chair", description: "Red fancy chair")
+product1 = Product.create!(name: "T-shirt", description: "All sizes are available", price: 20.0, warehouseQuantity: 20)
+product2 = Product.create!(name: "Closet", description: "Latest model", price: 400.0, warehouseQuantity: 10)
+product3 = Product.create!(name: "Table", description: "Oval table", price: 200.0, warehouseQuantity: 15)
+product4 = Product.create!(name: "Chair", description: "Red fancy chair", price: 15.0, warehouseQuantity: 100)
