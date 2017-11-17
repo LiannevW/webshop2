@@ -1,5 +1,5 @@
 class CartItem
-  attr_reader :product, :amount
+  attr_reader :product, :amount, :product_id
   attr_accessor :added_at, :price
 
   def initialize(product, amount)
@@ -20,12 +20,11 @@ class CartItem
   end
 
   def self.from_hash(item_hash)
-    product = Product.where(id: item_hash[:product_id]).first
+    product = Product.where(id: item_hash["product_id"]).first
     return if product.nil?
-
-    item=CartItem.new(product, item_hash[:amount])
-    item.added_at = item_hash[:added_at]
-    item.price = item_hash[:price]
+    item=CartItem.new(product, item_hash["amount"])
+    item.added_at = item_hash["added_at"]
+    item.price = 100
     item
   end
 end

@@ -9,13 +9,20 @@ class ShoppingCart
 
   def add_product(product, amount = 1)
     raise ArgumentError.new("Not a product") unless product.is_a?(Product)
-    @cart_items << CartItem.new(product, amount)
+    if (!@cart_items[0].nil?)
+
+       @cart_items << CartItem.new(product, amount)
+     else
+       @cart_items[0] = CartItem.new(product, amount)
+     end
     store!
     return true
   end
 
   def show_cart
-    @cart_items
+    @cart_items.map do |item|
+      Product.where(id: item.product_id).first
+    end
   end
 
   def remove_product(product, amount = 1)
@@ -49,8 +56,11 @@ class ShoppingCart
   end
 
   def store!
+
     @session[:shopping_cart] = @cart_items.map do |item|
+      # next if item.nil?
       item.to_hash
     end
+
   end
 end
