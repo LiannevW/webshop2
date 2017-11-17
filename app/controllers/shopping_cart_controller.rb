@@ -2,6 +2,8 @@ class ShoppingCartController < ApplicationController
   after_action :authenticate_user!
   def index
     # show whats in there
+    @cart = shopping_cart
+    @shopping_cart = @cart.show_cart
   end
 
   def create

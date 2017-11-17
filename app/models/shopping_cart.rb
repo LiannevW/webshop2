@@ -14,7 +14,9 @@ class ShoppingCart
     return true
   end
 
-
+  def show_cart
+    @cart_items
+  end
 
   def remove_product(product, amount = 1)
     return false unless already_ordered?(product)
