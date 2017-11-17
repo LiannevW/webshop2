@@ -31,7 +31,7 @@ class ShoppingCart
       item.product.id == product.id
     end
       @cart_items
-        byebug
+        
         store!
   end
 

@@ -1,15 +1,32 @@
 <h1>Your ShoppingCart</h1>
 
+<% @product_total_price = 0 %>
+<% @items.each do |product| %>
+  <% @product_total_price += product.price %>
+<% end %>
+
 <table>
+  <tr>
+    <td>Product Name</td>
+    <td>Product Price</td>
+    <td></td>
+  </tr>
   <% @items.each do |product| %>
     <tr>
       <td><%= link_to product.name, product_path(product.id) %></p>
       <td><%= product.price %></p>
-
+        <td>
         <p><%= link_to "Delete item", shopping_cart_path(product), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-default" %></p>
+      </td>
     </tr>
   <% end %>
+  <tr>
+    <td>Total Price</td>
+    <td>=</td>
+    <td><%= @product_total_price %></td>
+  </tr>
 </table>
+
 
 <p><%= link_to "Checkout", root_path, :class => "btn btn-default" %></p>
 <p><%= link_to "Continue Shopping", root_path, :class => "btn btn-default" %></p>
