@@ -12,7 +12,7 @@ class ShoppingCartController < ApplicationController
     amount = params[:amount]
 
     if shopping_cart.add_product(product, amount)
-      # happy
+        # happy
     else
       # not so happy, something went wrong
     end
