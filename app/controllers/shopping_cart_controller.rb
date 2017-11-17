@@ -1,4 +1,5 @@
 class ShoppingCartController < ApplicationController
+  after_action :authenticate_user!
   def index
     # show whats in there
   end

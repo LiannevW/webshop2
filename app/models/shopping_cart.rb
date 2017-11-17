@@ -8,11 +8,13 @@ class ShoppingCart
   end
 
   def add_product(product, amount = 1)
-    raise ArgumentError.new("New a product") unless product.is_a?(Product)
+    raise ArgumentError.new("Not a product") unless product.is_a?(Product)
     @cart_items << CartItem.new(product, amount)
     store!
     return true
   end
+
+
 
   def remove_product(product, amount = 1)
     return false unless already_ordered?(product)
