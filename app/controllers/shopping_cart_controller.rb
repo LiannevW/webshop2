@@ -20,14 +20,20 @@ class ShoppingCartController < ApplicationController
 
     if @cart.add_product(product, amount)
         # happy
-        redirect_to root_path
+        redirect_to root_path, notice: "Thanks for your order"
     else
+      redirect_to root_path, notice: "Go out"
       # not so happy, something went wrong
       #redirect_to product_id
     end
   end
 
   def destroy
+    @cart = shopping_cart
+    product = Product.find(params[:id])
+    @cart.remove_product(product)
+    redirect_to root_path
+    byebug
     # remove something from it
   end
 end
