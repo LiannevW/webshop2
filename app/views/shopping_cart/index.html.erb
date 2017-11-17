@@ -1,10 +1,13 @@
-<h1>You have ordered</h1>
+<h1>Your ShoppingCart</h1>
 
+<table>
+  <% @items.each do |product| %>
+    <tr>
+      <td><%= link_to product.name, product_path(product.id) %></p>
+      <td><%= product.price %></p>
+    </tr>
+  <% end %>
+</table>
 
-
-<p>
-<% @items.each do |product| %>
-<%= product.name %>
-<% end %>
-
-</p>
+<p><%= link_to "Checkout", root_path, :class => "btn btn-default" %></p>
+<p><%= link_to "Continue Shopping", root_path, :class => "btn btn-default" %></p>
