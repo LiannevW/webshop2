@@ -33,8 +33,11 @@ respond_to do |format|
   def destroy
     @cart = shopping_cart
     product = Product.find(params[:id])
-    @cart.remove_product(product)
-    redirect_to shopping_cart_index_path
+    respond_to do |format|
+      @cart.remove_product(product)
+        format.html {redirect_to shopping_cart_index_path}
+        format.json {render json: {cart: @cart, status: :deleted, location: shopping_cart_index_path }}
+      end
 
     # remove something from it
   end

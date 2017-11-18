@@ -1,11 +1,11 @@
-function addProduct(product_id) {
-  var addedProduct = { product_id: product_id};
+function removeProduct(product_id) {
+  var removedProduct = { product_id: product_id};
 
   $.ajax({
-    type: "POST",
-    url: "/shopping_cart.json",
+    type: "DELETE",
+    url: "/shopping_cart/" + product_id + ".json",
     data: JSON.stringify({
-      product: addedProduct
+      product: removedProduct
     }),
     contentType: "application/json",
     dataType: "json"
@@ -13,8 +13,9 @@ function addProduct(product_id) {
   .done(function(data) {
     console.log(data);
     var notice_me = $('<div class="panel panel-primary"></div>')
-      .html("Product added via ajax");
+      .html("Product removed via ajax");
     $("#yield-container").prepend(notice_me);
+    $("#product-row").remove();
   })
 
   .fail(function(error) {
@@ -34,14 +35,15 @@ function addProduct(product_id) {
 //     .append(errorHelpBlock);
 // }
 
-function submitProduct(event) {
+function stageToRemoveProduct(event) {
   event.preventDefault();
   //  resetErrors();
   // ($("#song_name").val());
-  addProduct(Number($("#product-id").html()));
+  removeProduct(Number($("#product-id").html()));
 }
 
 
 $(document).ready(function() {
-  $("#add-product").on('click', submitProduct);
+  $("#remove-product").on('click', stageToRemoveProduct);
+
 });
