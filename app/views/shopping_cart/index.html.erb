@@ -12,12 +12,12 @@
     <td></td>
   </tr>
   <% @items.each do |product| %>
-    <tr>
-      <td><%= link_to product.name, product_path(product.id) %></p>
-      <td><%= product.price %></p>
-        <td>
-        <p><%= link_to "Delete item", shopping_cart_path(product), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-default" %></p>
-      </td>
+    <tr id="product-row">
+      <td><%= link_to product.name, product_path(product.id) %></td>
+      <td><%= product.price %></td>
+      <td id="product-id"><%= product.id %></td>
+      <td><button id="remove-product">Delete via ajax</button></td>
+      <td><%= link_to "Delete item", shopping_cart_path(product), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-default" %></td>
     </tr>
   <% end %>
   <tr>
