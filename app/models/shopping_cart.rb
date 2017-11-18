@@ -14,7 +14,7 @@ class ShoppingCart
        @cart_items << CartItem.new(product, amount)
      else
        @cart_items[0] = CartItem.new(product, amount)
- end
+     end
     store!
     return true
   end
@@ -31,7 +31,7 @@ class ShoppingCart
       item.product.id == product.id
     end
       @cart_items
-
+        
         store!
   end
 
@@ -56,7 +56,7 @@ class ShoppingCart
   def store!
 
     @session[:shopping_cart] = @cart_items.map do |item|
-      next if item.nil?
+      # next if item.nil?
       item.to_hash
     end
 
