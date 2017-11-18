@@ -41,6 +41,10 @@ function submitProduct(event) {
   addProduct(Number($("#product-id").html()));
 }
 
+// function getSongAttributes() {
+//   let date = `${$("#song_release_date_1i").val()}-${$("#song_release_date_2i").val()}-01 00:00:00`
+//   return [$("#song_name").val(), date, $("#song_length").val()];
+// }
 
 $(document).ready(function() {
   $("#add-product").on('click', submitProduct);
